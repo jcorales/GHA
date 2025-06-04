@@ -18,7 +18,8 @@ jobs:
           echo "Hola mundo desde GitHub Actions"
           echo "Este es un ejemplo de un script de varias líneas"
   second_job:
-    needs: firts_job
+    needs: firts_job # This job depends on the completion of the first job
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' # Ensure this job only runs on push to main branch
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
