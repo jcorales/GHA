@@ -1,0 +1,19 @@
+name: "Hola mundo"
+
+on:
+  push:
+    branches: ["main"]
+
+
+jobs:
+  deploy_firts_job_github:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run a one-line script
+        run: echo "Hola mundo desde GitHub Actions"
+      - name: Run a multi-line script
+        run: |
+          echo "Hola mundo desde GitHub Actions"
+          echo "Este es un ejemplo de un script de varias líneas"
