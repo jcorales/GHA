@@ -11,7 +11,7 @@ jobs:
       - name: work dir
         run: echo "Directorio de trabajo"
       - id: step_1
-        run: echo "var=hola mundo" >> $GITHUB_OUTPUT
+        run: echo "var=hola mundo first_job" >> $GITHUB_OUTPUT
       - name: obtener mensaje
         run: echo "Mensaje ${{ steps.step_1.outputs.var }}"
 
