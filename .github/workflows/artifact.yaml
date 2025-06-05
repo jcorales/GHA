@@ -5,28 +5,27 @@ on: push
 jobs:
   first_job:
     runs-on: ubuntu-latest
-#    outputs:
-#      salida: ${{ steps.step_1.outputs.var }} # Uncomment this line to enable outputs
-
     steps:
       - name: Crear archivo
         run: echo "Hola mundo" >> test.txt
 
       - name: Subir artefacto
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4 # Uncomment this line to enable artifact upload
         with:
           name: archivo-test
           path: test.txt
 
 #lo revisas el archivo-test en Artifacts --> github/actions/runs/ en Summary (web del repo)
 
+##segundo job sirve para descargar el artefacto y usarlo
   segundo_job:
     runs-on: ubuntu-latest
+    if : ${{ github.ref == 'refs/heads/main' }} ## condition to run this job only on main branch
     needs: first_job
 
     steps:
       - name: Descargar artefacto
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4 # Uncomment this line to enable artifact download
         with:
           name: archivo-test
 
