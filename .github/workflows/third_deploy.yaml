@@ -6,8 +6,8 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
     
-    outputs:
-     salida: ${{ steps.step_1.outputs.my_variable }}
+#    outputs:
+#     salida: ${{ steps.step_1.outputs.my_variable }} #
 
     steps:
      - name: Generar archivo
