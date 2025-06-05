@@ -5,9 +5,13 @@ on: push
 jobs:
   first_job:
     runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.step_1.outputs.var }} # Uncomment this line to enable outputs
+
     steps:
       - name: Crear archivo
         run: echo "Hola mundo" >> test.txt
+        
       - name: Subir artefacto
         uses: actions/upload-artifact@v4
         with:
