@@ -20,7 +20,7 @@ jobs:
 ##segundo job sirve para descargar el artefacto y usarlo
   segundo_job:
     runs-on: ubuntu-latest
-    if : ${{ github.ref == 'refs/heads/master' }} ## condition to run this job only on main branch
+    if : ${{ github.ref == 'refs/heads/main' }} ## condition to run this job only on main branch
     needs: first_job
 
     steps:
@@ -31,3 +31,5 @@ jobs:
 
       - name: Cat file
         run: cat test.txt
+      - name: muestar branch
+        run: echo "La rama es ${{ github.ref }}"
