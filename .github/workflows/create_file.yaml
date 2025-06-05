@@ -7,4 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Crear archivo
-        run: echo "Hola mundo" > test.txt
+        run: echo "Hola mundo" >> test.txt
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: archivo-test
+          path: test.txt
