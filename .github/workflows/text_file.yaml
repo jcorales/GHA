@@ -5,8 +5,8 @@ on: push
 jobs:
   first_job:
     runs-on: ubuntu-latest
-    #outputs:
-    #  salida: ${{ steps.step_1.outputs.var }} # Uncomment this line to enable outputs
+    outputs:
+      salida: ${{ steps.step_1.outputs.var }} # Uncomment this line to enable outputs
     steps:
       - name: work dir
         run: echo "Directorio de trabajo"
