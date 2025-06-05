@@ -1,0 +1,28 @@
+name: Deploy to server
+
+on: push
+
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    
+    #outputs:
+    #  salida: ${{ steps.step_1.outputs.my_variable }} #
+
+    steps:
+     - name: work dir
+     - id: step_1
+       run: echo "var=hola mundo" >> $GITHUB_OUTPUTS
+     - name: obtener mensaje
+       run: echo "Mensaje ${{ steps.step_1.outputs.var }}"
+  
+  segundo_job:
+    runs-on: ubuntu-latest
+    needs: first_job
+    steps:
+      env:
+        SALIDA: ${{ needs.first_job.outputs.salida }}
+      
+      steps:
+      - name: work dir
+      - run: echo "El mensaje es $SALIDA"
